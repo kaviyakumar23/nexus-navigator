@@ -1,0 +1,16 @@
+modules:
+  macro:
+    - key: nexus-navigator-hello-world
+      resource: main
+      resolver:
+        function: resolver
+      title: Nexus Navigator
+      description: Inserts Hello world!
+  function:
+    - key: resolver
+      handler: index.handler
+resources:
+  - key: main
+    path: static/hello-world/build
+app:
+  id: ari:cloud:ecosystem::app/a2336e15-44a0-4d9c-9188-e5bf87376dbb
