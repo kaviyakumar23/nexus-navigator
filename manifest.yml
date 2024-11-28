@@ -1,16 +1,78 @@
-modules:
-  macro:
-    - key: nexus-navigator-hello-world
-      resource: main
-      resolver:
-        function: resolver
-      title: Nexus Navigator
-      description: Inserts Hello world!
-  function:
-    - key: resolver
-      handler: index.handler
-resources:
-  - key: main
-    path: static/hello-world/build
 app:
   id: ari:cloud:ecosystem::app/a2336e15-44a0-4d9c-9188-e5bf87376dbb
+  name: "Nexus Navigator"
+  runtime:
+    name: "nodejs20.x"
+
+permissions:
+  scopes:
+    # Jira permissions
+    - "read:jira-work"
+    - "write:jira-work"
+    - "read:jira-user"
+    # Confluence permissions
+    - "read:confluence-space"
+    - "write:confluence-space"
+    - "read:confluence-content"
+    - "write:confluence-content"
+    - "read:confluence-user"
+    # Storage permission
+    - "storage:app"
+
+  content:
+    styles:
+      - "unsafe-inline"
+    scripts:
+      - "unsafe-inline"
+      - "unsafe-eval"
+
+  external:
+    fetch:
+      backend:
+        - "api.openai.com"
+      client:
+        - "api.openai.com"
+        - "cdnjs.cloudflare.com"
+
+modules:
+  function:
+    - key: graph-ops
+      handler: index.handler
+
+  # Jira Global Page
+  jira:globalPage:
+    - key: nexus-navigator-home
+      title: Nexus Navigator
+      resource: nexus-navigator
+      resolver:
+        function: graph-ops
+
+  # Confluence Global Page
+  confluence:globalPage:
+    - key: nexus-navigator-confluence
+      title: Nexus Navigator
+      route: navigator
+      resolver:
+        function: graph-ops
+
+  # Confluence Macro
+  confluence:macro:
+    - key: nexus-navigator-macro
+      title: Knowledge Graph
+      description: "Embed a knowledge graph visualization"
+      resource: nexus-navigator
+      resolver:
+        function: graph-ops
+
+  # Rovo AI Agent
+  rovo:agent:
+    - key: nexus-ai
+      name: "Nexus Knowledge Assistant"
+      prompt: |
+        You are an AI assistant helping users navigate and understand their knowledge graph.
+        Your purpose is to help analyze connections between different pieces of content
+        and provide insights about the relationships between various documents and issues.
+      
+resources:
+  - key: nexus-navigator
+    path: static/nexus-navigator/build

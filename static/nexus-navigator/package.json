@@ -1,0 +1,55 @@
+{
+  "name": "nexus-navigator",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@atlaskit/button": "^20.3.2",
+    "@atlaskit/css-reset": "^6.11.2",
+    "@atlaskit/dropdown-menu": "^12.22.3",
+    "@atlaskit/select": "^18.5.3",
+    "@atlaskit/spinner": "^16.3.4",
+    "@atlaskit/tabs": "^16.5.3",
+    "@atlaskit/textfield": "^6.5.5",
+    "@forge/bridge": "^2.6.1",
+    "@headlessui/react": "^2.2.0",
+    "d3": "^7.9.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-force-graph": "^1.44.7",
+    "react-force-graph-2d": "^1.25.8",
+    "react-router-dom": "^6.16.0",
+    "zustand": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.0.3",
+    "autoprefixer": "^10.4.15",
+    "eslint": "^8.45.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.3",
+    "postcss": "^8.4.29",
+    "tailwindcss": "^3.4.15",
+    "vite": "^4.4.5"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
